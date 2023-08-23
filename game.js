@@ -1,24 +1,27 @@
+const prompt = require("prompt-sync")();
+
 function getComputerChoice() {
     let n = Math.random()*3;
       if (n < 1) {
-        return "Rock";
+        return "rock";
     } else if (n > 1 && n <= 2) {
-        return "Paper";
+        return "paper";
     } else {
-        return "Scissors";
+        return "scissors";
     }
 }
 
 function playRound(playerSelection, computerSelection) {
-    if ((computerSelection === "Rock" && playerSelection === "Scissors") || (computerSelection === "Scissors" && playerSelection === "Paper") || (computerSelection === "Paper" && playerSelection === "Rock")) {
+    if ((computerSelection === "rock" && playerSelection === "scissors") || (computerSelection === "scissors" && playerSelection === "paper") || (computerSelection === "paper" && playerSelection === "rock")) {
         return "You lose! " + computerSelection + " beats " + playerSelection + ".";
-    } else if ((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Rock")) {
+    } else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "rock")) {
         return "You win! " + playerSelection + " beats " + computerSelection + ".";
     } else {
         return "It's a tie! " + playerSelection + " ties with " + computerSelection + ".";
     }
 }
 
-const playerSelection = "Scissors";
+let playerSelection = prompt("What is your pick? ");
+playerSelection = playerSelection.toLowerCase();
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
