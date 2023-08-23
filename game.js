@@ -1,8 +1,8 @@
 function getComputerChoice() {
     let n = Math.random()*3;
-    if (n < 1) {
+      if (n < 1) {
         return "Rock";
-    } else if (1 < n <= 2) {
+    } else if (n > 1 && n <= 2) {
         return "Paper";
     } else {
         return "Scissors";
@@ -10,15 +10,15 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if ((computerSelection === "Rock" && playerSelection === "Scissors") || (computerSelection === "Scissors" && playerSelection === "Paper") || (computerSelection === "Paper" || playerSelection === "Rock")) {
+    if ((computerSelection === "Rock" && playerSelection === "Scissors") || (computerSelection === "Scissors" && playerSelection === "Paper") || (computerSelection === "Paper" && playerSelection === "Rock")) {
         return "You lose! " + computerSelection + " beats " + playerSelection + ".";
-    } else if ((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Paper") || (playerSelection === "Paper" || computerSelection === "Rock")) {
+    } else if ((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Rock")) {
         return "You win! " + playerSelection + " beats " + computerSelection + ".";
     } else {
         return "It's a tie! " + playerSelection + " ties with " + computerSelection + ".";
     }
 }
 
-const playerSelection = "Rock";
+const playerSelection = "Scissors";
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
