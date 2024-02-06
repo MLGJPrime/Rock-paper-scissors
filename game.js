@@ -2,12 +2,12 @@ const prompt = require("prompt-sync")();
 
 function getComputerChoice() {
     let n = Math.random()*3;
-      if (n < 1) {
-        return "rock";
-    } else if (n > 1 && n <= 2) {
-        return "paper";
-    } else {
-        return "scissors";
+        if (n < 1) {
+            return "rock";
+        } else if (n > 1 && n <= 2) {
+            return "paper";
+        } else {
+            return "scissors";
     }
 }
 
