@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    const choices = ["rock", "paper", "scissors"];
+    const choices = ["Rock", "Paper", "Scissors"];
     const index = Math.floor(Math.random() * choices.length);
     return choices[index];
 }
@@ -10,9 +10,9 @@ function playRound(playerSelection, computerSelection) {
     }
 
     const winConditions = {
-        rock: 'scissors',
-        paper: 'rock',
-        scissors: 'paper'
+        Rock: 'Scissors',
+        Paper: 'Rock',
+        Scissors: 'Paper'
     };
 
     if (winConditions[playerSelection] === computerSelection) {
@@ -47,19 +47,21 @@ function playRound(playerSelection, computerSelection) {
 // }
 
 const buttons = [
-    { selector: "#btn1", value: "rock" },
-    { selector: "#btn2", value: "paper" },
-    { selector: "#btn3", value: "scissors" },
+    { selector: "#btn1", value: "Rock" },
+    { selector: "#btn2", value: "Paper" },
+    { selector: "#btn3", value: "Scissors" },
 ];
 
 const computerSelection = getComputerChoice();
+
+const div = document.querySelector("#result");
 
 buttons.forEach(button => {
     const btn = document.querySelector(button.selector);
     btn.addEventListener("click", () => {
         const playerSelection = button.value;
         const roundResult = playRound(playerSelection, computerSelection);
-        console.log(roundResult);
+        div.textContent = roundResult;
     });
 });
 
