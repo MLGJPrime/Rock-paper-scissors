@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="game.js" defer></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <button id="btn1">ROCK</button>
-    <button id="btn2">PAPER</button>
-    <button id="btn3">SCISSORS</button>
+    <h1>Rock Paper Scissors</h1>
+    <h2>Enter the number of rounds</h2>
+    <input type="number" id="numRounds" min="1">
+    <button id="startGame">Start Game</button>
+    <h2>Choose your weapon</h2>
+    <button id="btn1" class="hidden">ROCK</button>
+    <button id="btn2" class="hidden">PAPER</button>
+    <button id="btn3" class="hidden">SCISSORS</button>
     <div id="result"></div>
+    <div id="score"></div>
+    <div id="game"></div>
 </body>
 </html>
