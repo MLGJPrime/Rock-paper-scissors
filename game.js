@@ -79,4 +79,14 @@ btnStartGame.addEventListener("click", () => {
         const btn = document.querySelector(button.selector);
         btn.classList.remove("hidden");
     });
+
+    // Reset scores
+    playerScore = 0;
+    computerScore = 0;
+    roundsPlayed = 0;
+
+    // Reset div contents
+    divResult.textContent = "";
+    divScore.textContent = "";
+    divGame.textContent = "";
 });
