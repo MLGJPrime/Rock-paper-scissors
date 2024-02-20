@@ -22,29 +22,38 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// function playGame(numRounds) {
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     for (let i = 0; i < numRounds; i++) {
-//         let playerSelection = prompt("What is your pick? ");
-//         playerSelection = playerSelection.toLowerCase();
-//         const computerSelection = getComputerChoice();
-//         const roundResult = playRound(playerSelection, computerSelection);
-//         console.log(roundResult);
-//         if (roundResult.includes("win")) {
-//             playerScore++;
-//         } else if (roundResult.includes("lose")) {
-//             computerScore++;
-//         }
-//     }
-//     if (playerScore > computerScore) {
-//         console.log("You win the game!");
-//     } else if (playerScore < computerScore) {
-//         console.log("You lose the game!");
-//     } else {
-//         console.log("It's a tie game!");
-//     }
-// }
+function playGame(playerSelection) {
+    const computerSelection = getComputerChoice();
+    const roundResult = playRound(playerSelection, computerSelection);
+    divResult.textContent = roundResult;
+    if (roundResult.includes("win")) {
+        playerScore++;
+    } else if (roundResult.includes("lose")) {
+        computerScore++;
+    }
+    divScore.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+    roundsPlayed++;
+    if (roundsPlayed >= numRounds) {
+        if (playerScore > computerScore) {
+            divGame.textContent = "You win the game!";
+        } else if (playerScore < computerScore) {
+            divGame.textContent = "You lose the game!";
+        } else {
+            divGame.textContent = "It's a tie game!";
+        }
+        buttons.forEach(button => {
+            const btn = document.querySelector(button.selector);
+            btn.classList.add("hidden");
+        });
+    }
+}
+
+const computerSelection = getComputerChoice();
+
+const btnStartGame = document.querySelector("#startGame");
+const divResult = document.querySelector("#result");
+const divScore = document.querySelector("#score");
+const divGame = document.querySelector("#game");
 
 const buttons = [
     { selector: "#btn1", value: "Rock" },
@@ -52,19 +61,22 @@ const buttons = [
     { selector: "#btn3", value: "Scissors" },
 ];
 
-const computerSelection = getComputerChoice();
-
-const div = document.querySelector("#result");
-
 buttons.forEach(button => {
     const btn = document.querySelector(button.selector);
     btn.addEventListener("click", () => {
-        const playerSelection = button.value;
-        const roundResult = playRound(playerSelection, computerSelection);
-        div.textContent = roundResult;
+        playGame(button.value);
     });
 });
 
+let playerScore = 0;
+let computerScore = 0;
+let roundsPlayed = 0;
+let numRounds;
 
-// let numRounds = prompt("How many rounds do you want to play? ");
-// playGame(numRounds);
+btnStartGame.addEventListener("click", () => {
+    numRounds = document.querySelector("#numRounds").value;
+    buttons.forEach(button => {
+        const btn = document.querySelector(button.selector);
+        btn.classList.remove("hidden");
+    });
+});
